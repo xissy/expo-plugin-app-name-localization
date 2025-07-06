@@ -1,6 +1,6 @@
 {
   "name": "expo-plugin-app-name-localization",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Expo config plugin to add localized app names for iOS and Android",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -30,13 +30,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/taehoio/harvest-monorepo.git",
-    "directory": "packages/expo-plugin-app-name-localization"
+    "url": "git+https://github.com/xissy/expo-plugin-app-name-localization.git"
   },
   "bugs": {
-    "url": "https://github.com/taehoio/harvest-monorepo/issues"
+    "url": "https://github.com/xissy/expo-plugin-app-name-localization/issues"
   },
-  "homepage": "https://github.com/taehoio/harvest-monorepo/tree/main/packages/expo-plugin-app-name-localization#readme",
+  "homepage": "https://github.com/xissy/expo-plugin-app-name-localization#readme",
   "files": [
     "lib",
     "README.md",
