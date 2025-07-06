@@ -230,7 +230,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Taeho Kim**
 
-- GitHub: [@taehoio](https://github.com/taehoio)
 - Email: [taeho@taeho.io](mailto:taeho@taeho.io)
 
 ## Acknowledgments
