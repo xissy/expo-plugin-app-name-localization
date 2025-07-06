@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2025-07-06
 
 ### Added
+
 - Initial release of expo-plugin-app-name-localization
 - iOS app name localization support via InfoPlist.strings
 - Android app name localization support via strings.xml

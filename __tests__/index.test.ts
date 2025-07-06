@@ -110,7 +110,7 @@ describe('expo-plugin-app-name-localization', () => {
     it('should set LSHasLocalizedDisplayName in Info.plist', () => {
       const config: any = { ...mockConfig, modResults: {} };
       const options = { localizations: { en: 'My App' } };
-      
+
       const mockWithInfoPlist = withInfoPlist as jest.MockedFunction<typeof withInfoPlist>;
       mockWithInfoPlist.mockImplementation((config, callback) => {
         callback(config as any);
@@ -118,7 +118,7 @@ describe('expo-plugin-app-name-localization', () => {
       });
 
       withAppNameLocalization(config, options);
-      
+
       expect(config.modResults.LSHasLocalizedDisplayName).toBe(true);
       expect(config.modResults.CFBundleDisplayName).toBe('My App');
     });
@@ -130,15 +130,13 @@ describe('expo-plugin-app-name-localization', () => {
         ...mockConfig,
         modResults: {
           resources: {
-            string: [
-              { $: { name: 'app_name' }, _: 'OldName' },
-            ],
+            string: [{ $: { name: 'app_name' }, _: 'OldName' }],
           },
         },
       };
-      
+
       const options = { localizations: { en: 'New App Name' } };
-      
+
       const mockWithStringsXml = withStringsXml as jest.MockedFunction<typeof withStringsXml>;
       mockWithStringsXml.mockImplementation((config, callback) => {
         callback(config as any);
@@ -146,7 +144,7 @@ describe('expo-plugin-app-name-localization', () => {
       });
 
       withAppNameLocalization(config, options);
-      
+
       const appNameString = config.modResults.resources.string.find(
         (s: any) => s.$.name === 'app_name'
       );
@@ -163,9 +161,9 @@ describe('expo-plugin-app-name-localization', () => {
           },
         },
       };
-      
+
       const options = { localizations: { en: 'Brand New App' } };
-      
+
       const mockWithStringsXml = withStringsXml as jest.MockedFunction<typeof withStringsXml>;
       mockWithStringsXml.mockImplementation((config, callback) => {
         callback(config as any);
@@ -173,7 +171,7 @@ describe('expo-plugin-app-name-localization', () => {
       });
 
       withAppNameLocalization(config, options);
-      
+
       const appNameString = config.modResults.resources.string.find(
         (s: any) => s.$.name === 'app_name'
       );
@@ -220,19 +218,17 @@ describe('expo-plugin-app-name-localization', () => {
       );
 
       const consoleSpy = jest.spyOn(console, 'warn').mockImplementation();
-      
+
       const invalidLocales = {
-        'invalid_locale': 'Invalid',
+        invalid_locale: 'Invalid',
         '123': 'Numbers',
-        'EN': 'Uppercase',
+        EN: 'Uppercase',
       };
 
       withAppNameLocalization(mockConfig, { localizations: invalidLocales });
-      
-      expect(consoleSpy).toHaveBeenCalledWith(
-        expect.stringContaining('Invalid locale code')
-      );
-      
+
+      expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('Invalid locale code'));
+
       consoleSpy.mockRestore();
     });
   });
@@ -244,16 +240,16 @@ describe('expo-plugin-app-name-localization', () => {
         ...mockConfig,
         modResults: {
           resources: {
-            string: []
-          }
-        }
+            string: [],
+          },
+        },
       };
 
       // Mock the config plugins
       (withInfoPlist as jest.MockedFunction<typeof withInfoPlist>).mockImplementation(
         (config) => config
       );
-      
+
       let stringsXmlCalls = 0;
       (withStringsXml as jest.MockedFunction<typeof withStringsXml>).mockImplementation(
         (config, callback) => {
@@ -265,7 +261,7 @@ describe('expo-plugin-app-name-localization', () => {
           if (!configAny.modResults.resources) {
             configAny.modResults.resources = { string: [] };
           }
-          
+
           // Only call the async callback on the second call (the one that creates directories)
           if (stringsXmlCalls === 1) {
             callback(configAny);
@@ -274,12 +270,12 @@ describe('expo-plugin-app-name-localization', () => {
             const defaultName = 'American App';
             configAny.modResults.resources.string = [{ $: { name: 'app_name' }, _: defaultName }];
           }
-          
+
           stringsXmlCalls++;
           return config;
         }
       );
-      
+
       (withXcodeProject as jest.MockedFunction<typeof withXcodeProject>).mockImplementation(
         (config) => config
       );
@@ -288,22 +284,22 @@ describe('expo-plugin-app-name-localization', () => {
       const options = {
         localizations: {
           'en-US': 'American App',
-          'ko': 'Korean App',
+          ko: 'Korean App',
         },
       };
 
       withAppNameLocalization(configWithResources, options);
 
       // Wait for async operations
-      await new Promise(resolve => setTimeout(resolve, 0));
+      await new Promise((resolve) => setTimeout(resolve, 0));
 
       // Check that Android locale format is used
       expect(fs.ensureDir).toHaveBeenCalledTimes(2);
-      
+
       // Check all calls to ensureDir
       const calls = (fs.ensureDir as jest.MockedFunction<any>).mock.calls;
       const dirs = calls.map((call: any) => call[0]);
-      
+
       expect(dirs.some((dir: string) => dir.includes('values-en-rUS'))).toBe(true);
       expect(dirs.some((dir: string) => dir.includes('values-ko'))).toBe(true);
     });

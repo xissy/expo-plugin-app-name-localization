@@ -12,7 +12,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint src --ext .ts,.tsx",
-    "format": "prettier --write \"src/**/*.{ts,tsx,json,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,json,md,yml}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,json,md,yml}\""
   },
   "keywords": [
     "expo",

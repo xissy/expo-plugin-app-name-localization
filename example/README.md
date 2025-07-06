@@ -5,12 +5,14 @@ This example demonstrates how to use the `expo-plugin-app-name-localization` plu
 ## Setup
 
 1. Create a new Expo project:
+
 ```bash
 expo init LocalizationExample
 cd LocalizationExample
 ```
 
 2. Install the plugin:
+
 ```bash
 npm install expo-plugin-app-name-localization
 ```
@@ -18,11 +20,13 @@ npm install expo-plugin-app-name-localization
 3. Replace your `app.config.js` with the example configuration provided.
 
 4. Run prebuild to generate native projects:
+
 ```bash
 expo prebuild
 ```
 
 5. Run the app:
+
 ```bash
 # iOS
 expo run:ios
@@ -34,11 +38,13 @@ expo run:android
 ## Testing Different Languages
 
 ### iOS Simulator
+
 1. Open Settings → General → Language & Region
 2. Change iPhone Language to test different localizations
 3. The app name will update based on the selected language
 
 ### Android Emulator
+
 1. Open Settings → System → Languages & input → Languages
 2. Add and select different languages
 3. The app name will update based on the system language
