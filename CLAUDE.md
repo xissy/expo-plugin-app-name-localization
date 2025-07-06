@@ -30,12 +30,13 @@ npm run prepare            # Clean and build (runs automatically)
 ## Architecture & Code Organization
 
 ### Project Structure
-- **src/** - TypeScript source files
+
+- **`src/`** - TypeScript source files
   - `index.ts` - Main plugin implementation with iOS/Android handlers
   - `types.ts` - TypeScript type definitions
-- **lib/** - Compiled JavaScript output (generated, not in source control)
-- **__tests__/** - Jest unit tests
-- **example/** - Usage example with app.config.js
+- **`lib/`** - Compiled JavaScript output (generated, not in source control)
+- **`__tests__/`** - Jest unit tests
+- **`example/`** - Usage example with app.config.js
 
 ### Key Implementation Details
 
@@ -53,6 +54,7 @@ npm run prepare            # Clean and build (runs automatically)
 ### Testing Strategy
 
 Tests are comprehensive and cover:
+
 - Plugin validation (missing/invalid options)
 - iOS configuration updates
 - Android configuration updates
@@ -75,4 +77,4 @@ Run tests before committing any changes to ensure nothing breaks.
 - The `lib/` directory is generated - never edit files there directly
 - Always validate locale codes before processing
 - Test both iOS and Android paths when making changes
-- The plugin must be compatible with Expo SDK 47+ and config plugins 5.0+
+- The plugin requires Expo SDK 53 or later and has been tested with Expo SDK 53
