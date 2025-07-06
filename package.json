@@ -30,7 +30,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/taehoio/harvest-monorepo.git",
+    "url": "git+https://github.com/taehoio/harvest-monorepo.git",
     "directory": "packages/expo-plugin-app-name-localization"
   },
   "bugs": {
